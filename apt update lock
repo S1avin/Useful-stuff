@@ -1,0 +1,16 @@
+
+#This just means that there is an application using apt.
+
+#First try to find out which application it is by using this command in the terminal
+
+ps aux | grep '[a]pt'
+
+#If there is a process running using apt (like apt-get or aptitude), 
+#the best thing to do is just to let it finish what its doing. 
+#Otherwise you can kill it using
+
+kill <PID of the process>
+
+#After making sure there is no process or killing it, you can just remove the lock using
+
+sudo rm /var/lib/apt/lists/lock
