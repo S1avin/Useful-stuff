@@ -1,37 +1,4 @@
-Method 1 - Disable from sysctl
-
-#The first method to disable Ipv6 is to edit kernel level parameters via sysctl interface.
-#The kernel parameters that enable ipv6 are as follows:
-
-sysctl net.ipv6.conf.all.disable_ipv6
-#net.ipv6.conf.all.disable_ipv6 = 0
-
-sysctl net.ipv6.conf.default.disable_ipv6
-#net.ipv6.conf.default.disable_ipv6 = 0
-
-sysctl net.ipv6.conf.lo.disable_ipv6
-#net.ipv6.conf.lo.disable_ipv6 = 0
-
-#Note that the variables control "disabling" of ipv6. So setting them to 1 would disable ipv6
-#Edit the file - /etc/sysctl.conf
-
-sudo gedit /etc/sysctl.conf
-
-#And fill in the following lines at the end of that file
-
-# IPv6 disabled
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
-
-#Save the file and close it. Restart sysctl with
-
-sudo sysctl -p
-
-#Check the output of ifconfig again and there should be no ipv6 address
-#If it does not work, then try rebooting the system and check ifconfig again.
-
-Method 2 : Disable ipv6 from GRUB
+Disable ipv6 from GRUB
 #Ipv6 can also be disabled by editing the grub configuration file
 
 sudo gedit /etc/default/grub
@@ -40,7 +7,8 @@ sudo gedit /etc/default/grub
 
 GRUB_CMDLINE_LINUX="ipv6.disable=1"
 
-#The same can also be added to the value of the variable named "GRUB_CMDLINE_LINUX_DEFAULT" and either would work. Save the file, close it and regenerate the grub configuration
+#The same can also be added to the value of the variable named "GRUB_CMDLINE_LINUX_DEFAULT" and either would work.
+#Save the file, close it and regenerate the grub configuration
 
 sudo update-grub2
 
