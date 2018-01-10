@@ -4,7 +4,7 @@ You need to add it to /etc/fstab use your favourite text editor
 
 Add a line for the share, the format would look like this.
 
-//server/share        /mountpoint      cifs   credentials=/home/user/.file  0  0
+//server/share        /mountpoint      cifs   noperm,credentials=/home/user/.file  0  0
 
 File /home/user/.file sould looks like this:
 user=username
